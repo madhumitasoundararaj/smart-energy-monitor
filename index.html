@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Energy Monitor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ Smart Energy Monitor</h1>
+        <p class="subtitle">Calculate and Monitor Electrical Energy Consumption</p>
+
+        <div class="card">
+            <h2>Enter Electrical Parameters</h2>
+            
+            <div class="input-group">
+                <label>Voltage (V) in Volts:</label>
+                <input type="number" id="voltage" 
+                       placeholder="e.g., 230" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Current (I) in Amperes:</label>
+                <input type="number" id="current" 
+                       placeholder="e.g., 5" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Power Factor (cosφ):</label>
+                <input type="number" id="powerFactor" 
+                       placeholder="0 to 1" min="0" max="1" 
+                       step="0.01" value="0.8">
+            </div>
+
+            <div class="input-group">
+                <label>Usage Hours per Day:</label>
+                <input type="number" id="hours" 
+                       placeholder="e.g., 8" min="0" max="24">
+            </div>
+
+            <div class="input-group">
+                <label>Cost per kWh (₹):</label>
+                <input type="number" id="costPerUnit" 
+                       placeholder="e.g., 6" min="0">
+            </div>
+
+            <button onclick="calculate()">Calculate ⚡</button>
+            <button onclick="resetValues()" class="reset-btn">Reset</button>
+        </div>
+
+        <div class="card results" id="results" style="display:none">
+            <h2>📊 Results</h2>
+
+            <div class="result-grid">
+                <div class="result-item">
+                    <span class="result-label">Apparent Power (S)</span>
+                    <span class="result-value" id="apparentPower">-</span>
+                    <span class="result-unit">VA</span>
+                </div>
+
+                <div class="result-item">
+                    <span class="result-label">Active Power (P)</span>
+                    <span class="result-value" id="activePower">-</span>
+                    <span class="result-unit">Watts</span>
+                </div>
+
+                <div class="result-item">
+                    <span class="result-label">Reactive Power (Q)</span>
+                    <span class="result-value" id="reactivePower">-</span>
+                    <span class="result-unit">VAR</span>
+                </div>
+
+                <div class="result-item">
+                    <span class="result-label">Daily Energy</span>
+                    <span class="result-value" id="dailyEnergy">-</span>
+                    <span class="result-unit">kWh</span>
+                </div>
+
+                <div class="result-item">
+                    <span class="result-label">Monthly Energy</span>
+                    <span class="result-value" id="monthlyEnergy">-</span>
+                    <span class="result-unit">kWh</span>
+                </div>
+
+                <div class="result-item highlight">
+                    <span class="result-label">Monthly Cost</span>
+                    <span class="result-value" id="monthlyCost">-</span>
+                    <span class="result-unit">₹</span>
+                </div>
+            </div>
+
+            <div class="pf-status" id="pfStatus"></div>
+        </div>
+
+        <div class="card">
+            <h2>📐 Formulas Used</h2>
+            <div class="formula-grid">
+                <div class="formula">P = V × I × cosφ</div>
+                <div class="formula">S = V × I</div>
+                <div class="formula">Q = V × I × sinφ</div>
+                <div class="formula">E = P × t (kWh)</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with ❤️ | EEE Smart Energy Monitor Project</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

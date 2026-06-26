@@ -20,4 +20,4 @@ A web-based tool to monitor and analyze electrical energy consumption.
 - GitHub Pages for deployment
 
 ## Author
-Your Name
+MADHUMITA SOUNDARARAJ 
